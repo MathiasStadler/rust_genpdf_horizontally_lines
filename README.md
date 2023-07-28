@@ -96,3 +96,5 @@ EOT
 
 - search for font LiberationSans-Regular.ttf
 -- found on ubuntu here => /usr/share/fonts/truetype/liberation
+
+- found genpdf add fonts here [src example](https://git.sr.ht/~ireas/genpdf-rs/tree/master/examples/demo.rs)
