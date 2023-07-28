@@ -2,7 +2,10 @@ use genpdf::{
     elements,
     fonts::{self},
     style, Alignment, Element, Position, RenderResult, Size,
-};
+    };
+//from here
+//https://linuxhint.com/rust-check-file-exists/
+use std::fs;
 
 const FONT_DIRS: &[&str] = &[
     "/usr/share/fonts/liberation",
@@ -10,7 +13,7 @@ const FONT_DIRS: &[&str] = &[
 ];
 
 const DEFAULT_FONT_NAME: &'static str = "LiberationSans";
-const MONO_FONT_NAME: &'static str = "LiberationMono";
+// const MONO_FONT_NAME: &'static str = "LiberationMono";
 
 fn main() {
    /* org from blog
@@ -26,8 +29,8 @@ fn main() {
     let default_font =
         fonts::from_files(font_dir, DEFAULT_FONT_NAME, Some(fonts::Builtin::Helvetica))
             .expect("Failed to load the default font family");
-    let monospace_font = fonts::from_files(font_dir, MONO_FONT_NAME, Some(fonts::Builtin::Courier))
-        .expect("Failed to load the monospace font family");
+    // let monospace_font = fonts::from_files(font_dir, MONO_FONT_NAME, Some(fonts::Builtin::Courier))
+    //   .expect("Failed to load the monospace font family");
 
     let mut doc = genpdf::Document::new(default_font);
 
@@ -61,7 +64,18 @@ fn main() {
     ));
     doc.push(Line);
 
-    doc.render_to_file("../output/output.pdf").unwrap();
+    let output_file_path = "output.pdf";
+    /*
+    match fs::metadata(file_path) {
+        Ok(_) => {println!("File exists!");
+        doc.render_to_file("output.pdf").unwrap();
+                 },
+        Err(_) => println!("File does not exist!"),
+    }
+    */
+    // #TODO #ATTENTION NOT MULTI OS SAVE
+    doc.render_to_file(output_file_path).unwrap();
+    
 }
 
 struct Line;
