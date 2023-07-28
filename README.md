@@ -22,10 +22,33 @@ use genpdf::{
     style, Alignment, Element, Position, RenderResult, Size,
 };
 
+const FONT_DIRS: &[&str] = &[
+    "/usr/share/fonts/liberation",
+    "/usr/share/fonts/truetype/liberation",
+];
+
+const DEFAULT_FONT_NAME: &'static str = "LiberationSans";
+const MONO_FONT_NAME: &'static str = "LiberationMono";
+
 fn main() {
-    let mut doc = genpdf::Document::new(
+   /* org from blog
+        let mut doc = genpdf::Document::new(
         fonts::from_files("fonts/liberation", "LiberationSans", None).unwrap(),
     );
+    */
+    let font_dir = FONT_DIRS
+        .iter()
+        .filter(|path| std::path::Path::new(path).exists())
+        .next()
+        .expect("Could not find font directory");
+    let default_font =
+        fonts::from_files(font_dir, DEFAULT_FONT_NAME, Some(fonts::Builtin::Helvetica))
+            .expect("Failed to load the default font family");
+    let monospace_font = fonts::from_files(font_dir, MONO_FONT_NAME, Some(fonts::Builtin::Courier))
+        .expect("Failed to load the monospace font family");
+
+    let mut doc = genpdf::Document::new(default_font);
+
 
     doc.set_title("Test");
     doc.set_minimal_conformance();
@@ -56,7 +79,7 @@ fn main() {
     ));
     doc.push(Line);
 
-    doc.render_to_file("output.pdf").unwrap();
+    doc.render_to_file("../output/output.pdf").unwrap();
 }
 
 struct Line;
@@ -91,7 +114,15 @@ impl Element for Line {
         })
     }
 }
+
 EOT
+```
+
+- run program with follow command
+
+```bash
+cargo build --example first_create_pdf_with_line  
+cargo run --example first_create_pdf_with_line
 ```
 
 - search for font LiberationSans-Regular.ttf

@@ -13,7 +13,8 @@ const DEFAULT_FONT_NAME: &'static str = "LiberationSans";
 const MONO_FONT_NAME: &'static str = "LiberationMono";
 
 fn main() {
-   /* let mut doc = genpdf::Document::new(
+   /* org from blog
+        let mut doc = genpdf::Document::new(
         fonts::from_files("fonts/liberation", "LiberationSans", None).unwrap(),
     );
     */
@@ -60,7 +61,7 @@ fn main() {
     ));
     doc.push(Line);
 
-    doc.render_to_file("output.pdf").unwrap();
+    doc.render_to_file("../output/output.pdf").unwrap();
 }
 
 struct Line;
@@ -95,3 +96,4 @@ impl Element for Line {
         })
     }
 }
+
