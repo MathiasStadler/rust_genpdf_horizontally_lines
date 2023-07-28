@@ -1,21 +1,3 @@
-# just a test to make a pdf document  with a horizontally lines
-
-> we foolow the log entry
-
-- create new project
-- create example folder and add this to Cargo.toml
-- add rust lib genpdf to project and build project
--- Download all dependency
-
-```bash
-cargo add genpdf
-cargo build
-```
-
-- We copy code from FROM_HERE in file first_create_pdf_with_line.rs in folder example
-
-```bash
-cat <<EOT > ./examples/first_create_pdf_with_line.rs
 use genpdf::{
     elements,
     fonts::{self},
@@ -91,8 +73,3 @@ impl Element for Line {
         })
     }
 }
-EOT
-```
-
-- search for font LiberationSans-Regular.ttf
--- found on ubuntu here => /usr/share/fonts/truetype/liberation
