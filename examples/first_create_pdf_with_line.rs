@@ -82,7 +82,37 @@ fn main() {
     //page break
     doc.push(genpdf::elements::PageBreak::new());
 
-    doc.push(elements::Paragraph::new("lehr",));
+    doc.push(Line);
+    doc.push(Line);
+    doc.push(Line);
+    doc.push(Line);
+    doc.push(Line);
+    doc.push(Line);
+
+    //page break
+    doc.push(genpdf::elements::PageBreak::new());
+
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+
+    doc.push(genpdf::elements::PageBreak::new());
+
+    doc.push(elements::Paragraph::new("Watch the film again. What's the right information?",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("Watch the film again. What's the right information?",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("Watch the film again. What's the right information?",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    doc.push(elements::Paragraph::new("Watch the film again. What's the right information?",));
+    doc.push(elements::Paragraph::new("______________underline__________",));
+    
+
+
+    doc.push(elements::Paragraph::new("empty",));
 
     doc.push(elements::Paragraph::new("______________underline__________",));
 
