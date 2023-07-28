@@ -61,10 +61,29 @@ fn main() {
             .styled(style::Style::new().bold().with_font_size(20)),
     );
     doc.push(elements::Break::new(1.5));
-    doc.push(elements::Paragraph::new(
+    /*doc.push(elements::Paragraph::new(
         "This document demonstrates how the genpdf crate generates PDF documents. I removed a bunch of code from the demo and now it looks silly",
     ));
+    */
+    doc.push(elements::Paragraph::new("First sentences",));
+
     doc.push(Line);
+
+    doc.push(elements::Paragraph::new("Second sentences",));
+
+    doc.push(Line);
+
+    doc.push(elements::Paragraph::new("First sentences",));
+
+    doc.push(elements::Break::new(1.5));
+
+    doc.push(elements::Paragraph::new("______________underline__________",));
+
+    doc.push(elements::Paragraph::new("lehr",));
+
+    doc.push(elements::Paragraph::new("______________underline__________",));
+
+
 
     let output_file_path = "output.pdf";
     /*
