@@ -5,7 +5,7 @@ use genpdf::{
     };
 //from here
 //https://linuxhint.com/rust-check-file-exists/
-use std::fs;
+//use std::fs;
 
 const FONT_DIRS: &[&str] = &[
     "/usr/share/fonts/liberation",
@@ -21,6 +21,8 @@ fn main() {
         fonts::from_files("fonts/liberation", "LiberationSans", None).unwrap(),
     );
     */
+    //from here
+    // https://git.sr.ht/~ireas/genpdf-rs/tree/master/examples/demo.rs
     let font_dir = FONT_DIRS
         .iter()
         .filter(|path| std::path::Path::new(path).exists())
