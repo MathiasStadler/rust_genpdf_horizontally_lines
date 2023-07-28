@@ -79,6 +79,9 @@ fn main() {
 
     doc.push(elements::Paragraph::new("______________underline__________",));
 
+    //page break
+    doc.push(genpdf::elements::PageBreak::new());
+
     doc.push(elements::Paragraph::new("lehr",));
 
     doc.push(elements::Paragraph::new("______________underline__________",));
