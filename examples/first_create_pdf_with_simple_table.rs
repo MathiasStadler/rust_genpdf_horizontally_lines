@@ -3,6 +3,7 @@ use genpdf::{
     fonts::{self},
     style, Alignment, Element, Position, RenderResult, Size,
 };
+
 //from here
 //https://linuxhint.com/rust-check-file-exists/
 //use std::fs;
@@ -13,6 +14,8 @@ const FONT_DIRS: &[&str] = &[
 ];
 
 const DEFAULT_FONT_NAME: &'static str = "LiberationSans";
+
+const OUTPUT_FILE_PATH: &'static str = "pdf_with_simple_table.pdf";
 
 fn main() {
     //from here
@@ -71,15 +74,6 @@ fn main() {
 
     doc.push(Line);
 
-    /* doc.push(elements::Paragraph::new(
-        "______________underline__________",
-    ));
-    */
-
-    //doc.push(elements::Break::new(1.0));
-
-    //doc.push(elements::Paragraph::new("Hallo Text Line one"));
-
     // FROM HERE
     // https://docs.rs/genpdf/latest/genpdf/elements/struct.Paragraph.html
 
@@ -100,18 +94,33 @@ fn main() {
     let sample_text = " Test Text : Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
     doc.push(elements::Paragraph::new(sample_text));
 
+    // table FROM HERE https://docs.rs/genpdf/latest/genpdf/elements/struct.TableLayoutRow.html
+
+    //page break
+    doc.push(genpdf::elements::PageBreak::new());
+
+    //empty page
+    doc.push(elements::Paragraph::new("table"));
+
+    let table= elements::TableLayout::new(vec![1, 1])
+        .row()
+        .element(elements::Paragraph::new("Cell 1"))
+        .element(elements::Paragraph::new("Cell 2"))
+        .push()
+        .expect("Invalid table row");
+
+    doc.push(genpdf::elements::TableLayout(table));
+
     //page break
     doc.push(genpdf::elements::PageBreak::new());
 
     //empty page
     doc.push(elements::Paragraph::new("empty page"));
 
-    // output file path
-    let output_file_path = "pdf_with_simple_line.pdf";
-
     // render to file amd save
     // old doc.render_to_file(output_file_path).unwrap();
-    doc.render_to_file(output_file_path).expect("Failed to render document");
+    doc.render_to_file(OUTPUT_FILE_PATH)
+        .expect("Failed to render document");
 }
 
 struct Line;
