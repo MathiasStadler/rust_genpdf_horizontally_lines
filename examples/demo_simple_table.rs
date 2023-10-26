@@ -1,8 +1,3 @@
-// rm ouput_t1.pdf && cargo run --example  demo_t1 ouput_t1.pdf
-// OUTPUT_FILE=ouput_t1.pdf && if [ -f $OUTPUT_FILE ]; then   rm $OUTPUT_FILE; fi && cargo run --example  demo_t1 $OUTPUT_FILE
-
-// RUST_BACKTRACE=1 cargo run --example  demo_t1 $OUTPUT_FILE
-
 // FROM HERE
 // https://git.sr.ht/~ireas/genpdf-rs/tree/v0.2.0/item/examples/demo.rs
 
@@ -41,12 +36,10 @@ const LOREM_IPSUM: &'static str =
     non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
 fn main() {
-    //read args
     let args: Vec<_> = env::args().skip(1).collect();
     if args.len() != 1 {
         panic!("Missing argument: output file");
     }
-
     let output_file = &args[0];
 
     let font_dir = FONT_DIRS
@@ -54,11 +47,9 @@ fn main() {
         .filter(|path| std::path::Path::new(path).exists())
         .next()
         .expect("Could not find font directory");
-
     let default_font =
         fonts::from_files(font_dir, DEFAULT_FONT_NAME, Some(fonts::Builtin::Helvetica))
             .expect("Failed to load the default font family");
-        
     let monospace_font = fonts::from_files(font_dir, MONO_FONT_NAME, Some(fonts::Builtin::Courier))
         .expect("Failed to load the monospace font family");
 
@@ -81,43 +72,50 @@ fn main() {
     });
     doc.set_page_decorator(decorator);
 
+    #[cfg(feature = "hyphenation")]
+    {
+        use hyphenation::Load;
+
+        doc.set_hyphenator(
+            hyphenation::Standard::from_embedded(hyphenation::Language::EnglishUS)
+                .expect("Failed to load hyphenation data"),
+        );
+    }
+
     let monospace = doc.add_font_family(monospace_font);
     let _code = style::Style::from(monospace).bold();
     let _red = style::Color::Rgb(255, 0, 0);
     let _blue = style::Color::Rgb(0, 0, 255);
+    
+    
+
+    
+    
+
+
+//
 
     doc.push(elements::Paragraph::new(
         "Now let’s print a long table to demonstrate how page wrapping works:",
     ));
 
     let mut table = elements::TableLayout::new(vec![1, 5]);
-
     table.set_cell_decorator(elements::FrameCellDecorator::new(true, true, false));
-
     table
         .row()
         .element(
-            elements::Paragraph::new("Index Spalte 1")
+            elements::Paragraph::new("Index")
                 .styled(style::Effect::Bold)
                 .padded(1),
         )
         .element(
-            elements::Paragraph::new("Index Spalte 1")
-                .styled(style::Effect::Bold)
-                .padded(1),
-        )
-        .element(
-            elements::Paragraph::new("Text Spalte 2")
+            elements::Paragraph::new("Text")
                 .styled(style::Effect::Bold)
                 .padded(1),
         )
         .push()
         .expect("Invalid table row");
-
-    // for i in 0..10 {
-    // add rows
-    let rows = 5 + 1; // +1 for last rows
-    for i in 1..rows {
+    for i in 0..10 {
         table
             .row()
             .element(elements::Paragraph::new(format!("#{}", i)).padded(1))

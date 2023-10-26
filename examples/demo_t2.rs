@@ -1,25 +1,7 @@
 // rm ouput_t1.pdf && cargo run --example  demo_t1 ouput_t1.pdf
-// OUTPUT_FILE=ouput_t1.pdf && if [ -f $OUTPUT_FILE ]; then   rm $OUTPUT_FILE; fi && cargo run --example  demo_t1 $OUTPUT_FILE
+// OUTPUT_FILE=ouput_t2.pdf && if [ -f $OUTPUT_FILE ]; then   rm $OUTPUT_FILE; fi && cargo run --example  demo_t1 $OUTPUT_FILE
 
 // RUST_BACKTRACE=1 cargo run --example  demo_t1 $OUTPUT_FILE
-
-// FROM HERE
-// https://git.sr.ht/~ireas/genpdf-rs/tree/v0.2.0/item/examples/demo.rs
-
-// SPDX-FileCopyrightText: 2020 Robin Krahl <robin.krahl@ireas.org>
-// SPDX-License-Identifier: CC0-1.0
-
-//! This example generates a demo PDF document and writes it to the path that was passed as the
-//! first command-line argument.  You may have to adapt the `FONT_DIRS`, `DEFAULT_FONT_NAME` and
-//! `MONO_FONT_NAME` constants for your system so that these files exist:
-//! - `{FONT_DIR}/{name}-Regular.ttf`
-//! - `{FONT_DIR}/{name}-Bold.ttf`
-//! - `{FONT_DIR}/{name}-Italic.ttf`
-//! - `{FONT_DIR}/{name}-BoldItalic.ttf`
-//! for `name` in {`DEFAULT_FONT_NAME`, `MONO_FONT_NAME`}.
-//!
-//! The generated document using the latest `genpdf-rs` release is available
-//! [here](https://genpdf-rs.ireas.org/examples/demo.pdf).
 
 use std::env;
 
@@ -58,14 +40,14 @@ fn main() {
     let default_font =
         fonts::from_files(font_dir, DEFAULT_FONT_NAME, Some(fonts::Builtin::Helvetica))
             .expect("Failed to load the default font family");
-        
+
     let monospace_font = fonts::from_files(font_dir, MONO_FONT_NAME, Some(fonts::Builtin::Courier))
         .expect("Failed to load the monospace font family");
 
     let mut doc = genpdf::Document::new(default_font);
     doc.set_title("genpdf Demo Document");
-    doc.set_minimal_conformance();
-    doc.set_line_spacing(1.25);
+    //doc.set_minimal_conformance();
+    //doc.set_line_spacing(1.25);
 
     let mut decorator = genpdf::SimplePageDecorator::new();
     decorator.set_margins(10);
@@ -83,36 +65,25 @@ fn main() {
 
     let monospace = doc.add_font_family(monospace_font);
     let _code = style::Style::from(monospace).bold();
-    let _red = style::Color::Rgb(255, 0, 0);
-    let _blue = style::Color::Rgb(0, 0, 255);
+    //let _red = style::Color::Rgb(255, 0, 0);
+    //let _blue = style::Color::Rgb(0, 0, 255);
 
     doc.push(elements::Paragraph::new(
         "Now let’s print a long table to demonstrate how page wrapping works:",
     ));
 
-    let mut table = elements::TableLayout::new(vec![1, 5]);
+    let mut table = elements::TableLayout::new(vec![1, 1]);
 
     table.set_cell_decorator(elements::FrameCellDecorator::new(true, true, false));
 
-    table
-        .row()
-        .element(
-            elements::Paragraph::new("Index Spalte 1")
-                .styled(style::Effect::Bold)
-                .padded(1),
-        )
-        .element(
-            elements::Paragraph::new("Index Spalte 1")
-                .styled(style::Effect::Bold)
-                .padded(1),
-        )
-        .element(
-            elements::Paragraph::new("Text Spalte 2")
-                .styled(style::Effect::Bold)
-                .padded(1),
-        )
-        .push()
-        .expect("Invalid table row");
+    let mut row = table.row();
+    row.push_element(elements::Paragraph::new("Cell 1"));
+    row.push_element(elements::Paragraph::new("Cell 2"));
+    row.push().expect("Invalid table row");
+    let mut row = table.row();
+    row.push_element(elements::Paragraph::new("Cell 3"));
+    row.push_element(elements::Paragraph::new("Cell 4"));
+    row.push().expect("Invalid table row");
 
     // for i in 0..10 {
     // add rows
