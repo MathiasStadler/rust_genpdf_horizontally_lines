@@ -109,6 +109,7 @@ fn main() {
     let sample_text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.";
     doc.push(elements::Paragraph::new(sample_text));
 
+    
     /*
     //page break
     doc.push(genpdf::elements::PageBreak::new());
