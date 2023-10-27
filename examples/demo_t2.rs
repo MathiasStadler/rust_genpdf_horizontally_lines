@@ -75,7 +75,7 @@ fn main() {
         "Now let’s print a long table to demonstrate how page wrapping works:",
     ));
 
-    let mut table = elements::TableLayout::new(vec![1,1,1]);
+    let mut table = elements::TableLayout::new(vec![1,1,1,1,1,1]);
     
     table.set_cell_decorator(elements::FrameCellDecorator::new(true, true, false));
 
@@ -84,11 +84,17 @@ fn main() {
     row.push_element(elements::Paragraph::new("Cell 1"));
     row.push_element(elements::Paragraph::new("Cell 2"));
     row.push_element(elements::Paragraph::new("Cell 3"));
-    row.push().expect("Invalid table row");
-    let mut row = table.row();
     row.push_element(elements::Paragraph::new("Cell 4"));
     row.push_element(elements::Paragraph::new("Cell 5"));
-    row.push_element(elements::Paragraph::new("Cell 6"));
+    row.push_element(elements::Paragraph::new("A large Text"));
+    row.push().expect("Invalid table row");
+    let mut row = table.row();
+    row.push_element(elements::Paragraph::new("Cell 2.1"));
+    row.push_element(elements::Paragraph::new("Cell 2.2"));
+    row.push_element(elements::Paragraph::new("Cell 2.3"));
+    row.push_element(elements::Paragraph::new("Cell 4"));
+    row.push_element(elements::Paragraph::new("Cell 5"));
+    row.push_element(elements::Paragraph::new(LOREM_IPSUM));
     row.push().expect("Invalid table row");
 
     /*
