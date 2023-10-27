@@ -3,6 +3,9 @@
 
 // RUST_BACKTRACE=1 cargo run --example  demo_t1 $OUTPUT_FILE
 
+// OUTPUT_FILE=ouput_t2.pdf && if [ -f $OUTPUT_FILE ]; then   rm $OUTPUT_FILE; fi && RUST_BACKTRACE=1 cargo run --example  demo_t1 $OUTPUT_FILE
+
+
 use std::env;
 
 use genpdf::Alignment;
@@ -72,13 +75,15 @@ fn main() {
         "Now let’s print a long table to demonstrate how page wrapping works:",
     ));
 
-    let mut table = elements::TableLayout::new(vec![1, 1]);
-
+    let mut table = elements::TableLayout::new(vec![3,3]);
+    
     table.set_cell_decorator(elements::FrameCellDecorator::new(true, true, false));
 
     let mut row = table.row();
+    
     row.push_element(elements::Paragraph::new("Cell 1"));
     row.push_element(elements::Paragraph::new("Cell 2"));
+    row.push_element(elements::Paragraph::new("Cell 3"));
     row.push().expect("Invalid table row");
     let mut row = table.row();
     row.push_element(elements::Paragraph::new("Cell 3"));

@@ -1,0 +1,417 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'rust_genpdf_horizontally_lines'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=rust_genpdf_horizontally_lines",
+                    "--package=rust_genpdf_horizontally_lines"
+                    
+                ],
+                "filter": {
+                    "name": "rust_genpdf_horizontally_lines",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'rust_genpdf_horizontally_lines'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=rust_genpdf_horizontally_lines",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "rust_genpdf_horizontally_lines",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'hello_examples'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=hello_examples",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "hello_examples",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'hello_examples'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=hello_examples",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "hello_examples",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'simple_pdf'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=simple_pdf",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "simple_pdf",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'simple_pdf'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=simple_pdf",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "simple_pdf",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "demo_t2",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=demo_t2",
+                    "--package=rust_genpdf_horizontally_lines"
+                   
+                ],
+                "filter": {
+                    "name": "demo_t2",
+                    "kind": "example"
+                }
+            },
+            "args": ["output.pdf"],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'demo_t2'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=demo_t2",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo_t2",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'first_create_pdf_with_simple_line'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=first_create_pdf_with_simple_line",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "first_create_pdf_with_simple_line",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'first_create_pdf_with_simple_line'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=first_create_pdf_with_simple_line",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "first_create_pdf_with_simple_line",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'demo_only_table'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=demo_only_table",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo_only_table",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'demo_only_table'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=demo_only_table",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo_only_table",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'demo_simple_table'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=demo_simple_table",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo_simple_table",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'demo_simple_table'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=demo_simple_table",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo_simple_table",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'demo_t1'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=demo_t1",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo_t1",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'demo_t1'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=demo_t1",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo_t1",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'demo'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=demo",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'demo'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=demo",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "demo",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'first_create_pdf_with_line'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=first_create_pdf_with_line",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "first_create_pdf_with_line",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'first_create_pdf_with_line'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=first_create_pdf_with_line",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "first_create_pdf_with_line",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug example 'first_create_pdf_with_simple_table'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--example=first_create_pdf_with_simple_table",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "first_create_pdf_with_simple_table",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in example 'first_create_pdf_with_simple_table'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--example=first_create_pdf_with_simple_table",
+                    "--package=rust_genpdf_horizontally_lines"
+                ],
+                "filter": {
+                    "name": "first_create_pdf_with_simple_table",
+                    "kind": "example"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}
