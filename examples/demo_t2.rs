@@ -75,7 +75,7 @@ fn main() {
         "Now let’s print a long table to demonstrate how page wrapping works:",
     ));
 
-    let mut table = elements::TableLayout::new(vec![3,3]);
+    let mut table = elements::TableLayout::new(vec![1,1,1]);
     
     table.set_cell_decorator(elements::FrameCellDecorator::new(true, true, false));
 
@@ -86,10 +86,12 @@ fn main() {
     row.push_element(elements::Paragraph::new("Cell 3"));
     row.push().expect("Invalid table row");
     let mut row = table.row();
-    row.push_element(elements::Paragraph::new("Cell 3"));
     row.push_element(elements::Paragraph::new("Cell 4"));
+    row.push_element(elements::Paragraph::new("Cell 5"));
+    row.push_element(elements::Paragraph::new("Cell 6"));
     row.push().expect("Invalid table row");
 
+    /*
     // for i in 0..10 {
     // add rows
     let rows = 5 + 1; // +1 for last rows
@@ -101,7 +103,7 @@ fn main() {
             .push()
             .expect("Invalid table row");
     }
-
+*/
     doc.push(table);
 
     doc.render_to_file(output_file)
